@@ -1,0 +1,24 @@
+Item,Qty,Reference(s),Value,LibPart,Footprint,Datasheet,DK,LCSC,MPN,Rating,Tolerance
+1,1,C1,10n,Device:C_Small,Capacitor_SMD:C_0402_1005Metric,~,490-GRM1555CYA103GE01DCT-ND,C15195,,35V,C0G
+2,3,"C2, C5, C6",4.7u,Device:C_Small,Capacitor_SMD:C_0402_1005Metric,~,490-GRM155D81C475ME15JCT-ND,C23733,,6.3V,x5R
+3,2,"C3, C4",12p,Device:C_Small,Capacitor_SMD:C_0402_1005Metric,~,490-GRT1555C1E120JA02JCT-ND,C1547,,,x5R
+4,1,C7,1.5F,Device:C_Polarized_US,solar-bug:PHVL-3R9H155-R,https://www.eaton.com/content/dam/eaton/products/electronic-components/resources/data-sheet/eaton-phvl-supercapacitor-cylindrical-pack-data-sheet-elx1022-en.pdf,283-PHVL-3R9H155-R-ND,,PHVL-3R9H155-R ,3.9V,x5R
+5,1,D1,LED,Device:LED,LED_SMD:LED_0402_1005Metric,~,754-1811-1-ND,C160479,,,x5R
+6,2,"H1, H2",MountingHole,Mechanical:MountingHole,solar-bug:MountingHole_1.1mm,~,,,,,
+7,1,J1,JLINK-6PIN,solar-bug:JLINK-6PIN,solar-bug:JLINK_6PIN,,,,,,
+8,1,L1,22uH,Device:L,Inductor_SMD:L_Taiyo-Yuden_NR-40xx,~,587-2889-1-ND,C2880384,NR4018T220M,,
+9,1,LOGO1,Logo_Open_Hardware_Small,Graphic:Logo_Open_Hardware_Small,OSHW-logo:OSHW-logo_silkscreen-front_10mm,~,,,,,
+10,3,"R1, R2, R9",5.23M,Device:R_Small_US,Resistor_SMD:R_0402_1005Metric,~,541-5.23MLCT-ND,C477747,,1/16W,1%
+11,2,"R3, R6",3.01M,Device:R_Small_US,Resistor_SMD:R_0402_1005Metric,~,13-RC0402FR-073M01LCT-ND,C163464,,1/16W,1%
+12,5,"R4, R5, R7, R10, R11",4.99M,Device:R_Small_US,Resistor_SMD:R_0402_1005Metric,~,13-RC0402FR-074M99LCT-ND,C137963,,1/16W,1%
+13,1,R8,1k,Device:R_Small_US,Resistor_SMD:R_0402_1005Metric,~,311-1.00KLRCT-ND,C11702,,1/16W,1%
+14,4,"R12, R13, R14, R15",1M,Device:R_Small_US,Resistor_SMD:R_0402_1005Metric,~,311-1.00MLRCT-ND,C26083,,1/16W,1%
+15,1,SC1,KXOB25-04X3F-TR,Device:Solar_Cells,solar-bug:KXOB25-04X3F,https://ixapps.ixys.com/DataSheet/KXOB25-04X3F.pdf,KXOB25-04X3F-CT-ND,,KXOB25-04X3F-TR,,
+16,3,"SNS_BOT1, SNS_MID1, SNS_TOP1",C_Variable,Device:C_Variable,solar-bug:solar-bug-sensor,~,,,,,
+17,1,TP1,GND,Connector:TestPoint,solar-bug:TestPoint_Pad_D0.75mm,~,,,,,
+18,1,TP2,VIN,Connector:TestPoint,solar-bug:TestPoint_Pad_D0.75mm,~,,,,,
+19,1,TP4,3V0,Connector:TestPoint,solar-bug:TestPoint_Pad_D0.75mm,~,,,,,
+20,1,TP5,VBAT,Connector:TestPoint,solar-bug:TestPoint_Pad_D0.75mm,~,,,,,
+21,1,U1,E73-2G4M08S1C-52840,solar-bug:E73-2G4M08S1C-52840,solar-bug:E73-2G4M08S1C-52840,https://www.ebyte.com/en/downpdf.aspx?id=445,,C356849,,,
+22,1,U2,BQ25504,Battery_Management:BQ25504,solar-bug:VQFN-16-1EP_3x3mm_P0.5mm_EP1.8x1.8mm,http://www.ti.com/lit/ds/symlink/bq25504.pdf,296-29741-1-ND,C157471,,,
+23,1,Y1,32.768kHz,Device:Crystal,Crystal:Crystal_SMD_MicroCrystal_CM9V-T1A-2Pin_1.6x1.0mm,https://abracon.com/Resonators/ABS05.pdf,535-11899-1-ND,C398713,,,
