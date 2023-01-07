@@ -29,7 +29,7 @@ int main(void) {
     RET_IF_ERR(prst_ble_adv_set_data(&sensors));
     RET_IF_ERR(prst_ble_adv_start());
 
-    k_sleep(K_SECONDS(CONFIG_PRST_BLE_ADV_DURATION_SEC));
+    k_sleep(K_MSEC(CONFIG_PRST_BLE_ADV_DURATION_SEC));
 
     RET_IF_ERR(prst_ble_adv_stop());
 

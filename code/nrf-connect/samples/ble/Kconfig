@@ -4,11 +4,11 @@ rsource "../../prstlib/Kconfig"
 
 config PRST_SLEEP_DURATION_SEC
 	int "Sleep duration in seconds"
-	default 600
+	default 300
 
 config PRST_BLE_ADV_DURATION_SEC
 	int "Advertising duration in seconds"
-	default 1
+	default 500
 
 choice PRST_BLE_ENCODING
 	prompt "b-parasite BLE encoding"
