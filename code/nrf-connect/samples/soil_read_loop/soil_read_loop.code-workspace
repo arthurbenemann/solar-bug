@@ -1,16 +1,19 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": "../../prstlib"
 		},
 		{
-			"path": "../../prstlib"
+			"path": "../ble"
 		}
 	],
 	"settings": {
 		"C_Cpp.autoAddFileAssociations": false,
 		"nrf-connect.applications": [
-			"${workspaceFolder}"
-		]
+			"/home/arthur/git/b-parasite/code/nrf-connect/samples/beacon",
+			"${workspaceFolder:ble}"
+		],
+		"nrf-connect.topdir": "${nrf-connect.sdk:2.2.0}",
+		"nrf-connect.toolchain.path": "${nrf-connect.toolchain:2.2.0}"
 	}
 }
