@@ -6,8 +6,11 @@
 #include <zephyr/drivers/pwm.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/drivers/sensor.h>
 
 #include "prstlib/macros.h"
+
+static const struct device *temp_dev = DEVICE_DT_GET_ANY(nordic_nrf_temp);
 
 LOG_MODULE_REGISTER(adc, CONFIG_PRSTLIB_LOG_LEVEL);
 
@@ -127,6 +130,15 @@ int prst_adc_init() {
 int prst_adc_batt_read(prst_batt_t* out) {
   RET_IF_ERR(read_adc_spec(&adc_batt_spec, &out->adc_read));
   set_battery_percent(&out->adc_read, out);
+  return 0;
+}
+
+int prst_temp_read(prst_temp_t* out) {
+  //struct sensor_value temp_value;
+  sensor_sample_fetch(temp_dev);
+  sensor_channel_get(temp_dev, SENSOR_CHAN_DIE_TEMP,   &out->temp);
+  
+  //out->temp = temp_value.val1;
   return 0;
 }
 

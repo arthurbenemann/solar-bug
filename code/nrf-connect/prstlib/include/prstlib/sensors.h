@@ -9,6 +9,7 @@ typedef struct {
   prst_adc_photo_sensor_t photo;
   prst_batt_t batt;
   prst_shtc3_read_t shtc3;
+  prst_temp_t temp;
 } prst_sensors_t;
 
 int prst_sensors_read_all(prst_sensors_t *out);

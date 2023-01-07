@@ -97,7 +97,9 @@ int prst_ble_encode_service_data(const prst_sensors_t* sensors,
 
   // Temperature.
   out[3] = 0x02;
-  int16_t temp_val = 100 * sensors->shtc3.temp_c;
+  //int16_t temp_val = sensors->temp.temp.val2;
+  //int16_t temp_val = (100 * sensors->temp.temp.val1) + (sensors->temp.temp.val2/ 1000000;
+  int16_t temp_val = 100 * sensor_value_to_double(&sensors->temp.temp);
   out[4] = temp_val & 0xff;
   out[5] = temp_val >> 8;
   // Humidity.
