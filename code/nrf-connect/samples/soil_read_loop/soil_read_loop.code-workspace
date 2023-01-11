@@ -10,7 +10,6 @@
 	"settings": {
 		"C_Cpp.autoAddFileAssociations": false,
 		"nrf-connect.applications": [
-			"/home/arthur/git/b-parasite/code/nrf-connect/samples/beacon",
 			"${workspaceFolder:ble}"
 		],
 		"nrf-connect.topdir": "${nrf-connect.sdk:2.2.0}",
