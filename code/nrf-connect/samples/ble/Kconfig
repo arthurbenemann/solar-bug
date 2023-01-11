@@ -4,7 +4,7 @@ rsource "../../prstlib/Kconfig"
 
 config PRST_SLEEP_DURATION_SEC
 	int "Sleep duration in seconds"
-	default 300
+	default 3
 
 config PRST_BLE_ADV_DURATION_SEC
 	int "Advertising duration in seconds"

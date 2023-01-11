@@ -23,6 +23,8 @@ int main(void) {
 
   prst_sensors_t sensors;
   while (true) {
+    prst_led_on(2);
+
     RET_IF_ERR(prst_sensors_read_all(&sensors));
 
     RET_IF_ERR(prst_ble_adv_set_data(&sensors));
@@ -32,6 +34,7 @@ int main(void) {
 
     RET_IF_ERR(prst_ble_adv_stop());
 
+    prst_led_off(2);
     k_sleep(K_SECONDS(CONFIG_PRST_SLEEP_DURATION_SEC));
   }
 }
