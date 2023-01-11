@@ -100,31 +100,35 @@ int prst_ble_encode_service_data(const prst_sensors_t* sensors,
   int16_t temp_val = 100 * sensor_value_to_double(&sensors->temp.temp);
   out[4] = temp_val & 0xff;
   out[5] = temp_val >> 8;
-  // Humidity.
-  out[6] = 0x03;
-  // Value. Factor 0.01, over 100%.
-  uint16_t humi_val = 10000 * sensors->shtc3.rel_humi;
-  out[7] = humi_val & 0xff;
-  out[8] = humi_val >> 8;
-  // Illuminance.
-  out[9] = 0x05;
-  // Value. Factor of 0.01.
-  uint32_t lux_val = sensors->photo.brightness * 100;
-  out[10] = lux_val & 0xff;
-  out[11] = (lux_val >> 8) & 0xff;
-  out[12] = (lux_val >> 16) & 0xff;
+
   // Battery voltage.
-  out[13] = 0x0c;
+  out[6] = 0x0c;
   // Value. Factor of 0.001.
   uint16_t batt_val = sensors->batt.adc_read.millivolts;
-  out[14] = batt_val & 0xff;
-  out[15] = batt_val >> 8;
-  // Soil moisture.
-  out[16] = 0x14;
+  out[7] = batt_val & 0xff;
+  out[8] = batt_val >> 8;
+  
+  // Soil moisture top.
+  out[9] = 0x14;
   // Factor of 0.01, so we need to multiply our the value in 100% by 1/0.01 = 100.
   uint16_t soil_val = 10000 * sensors->soil.percentage;
-  out[17] = soil_val & 0xff;
-  out[18] = soil_val >> 8;
+  out[10] = soil_val & 0xff;
+  out[11] = soil_val >> 8;
+
+    // Soil moisture mid.
+  out[12] = 0x14;
+  // Factor of 0.01, so we need to multiply our the value in 100% by 1/0.01 = 100.
+  uint16_t soil_val2 = 10000 * sensors->soil.percentage;
+  out[13] = soil_val2 & 0xff;
+  out[14] = soil_val2 >> 8;
+
+  // Soil moisture bot.
+  out[15] = 0x14;
+  // Factor of 0.01, so we need to multiply our the value in 100% by 1/0.01 = 100.
+  uint16_t soil_val3 = 10000 * sensors->soil.percentage;
+  out[16] = soil_val3 & 0xff;
+  out[17] = soil_val3 >> 8;
+
 
 #endif  // Encoding protocols
 

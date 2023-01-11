@@ -108,11 +108,7 @@ static int read_adc_spec(const struct adc_dt_spec* spec, prst_adc_read_t* out) {
 }
 
 int prst_adc_init() {
-  RET_IF_ERR(adc_channel_setup_dt(&adc_soil_spec));
   RET_IF_ERR(adc_channel_setup_dt(&adc_batt_spec));
-
-  RET_IF_ERR(!device_is_ready(fast_disch_dt.port));
-  RET_IF_ERR(gpio_pin_configure_dt(&fast_disch_dt, GPIO_OUTPUT));
 
 #if DT_NODE_EXISTS(DT_NODELABEL(photo_transistor))
   RET_IF_ERR(adc_channel_setup_dt(&adc_photo_transistor_spec));

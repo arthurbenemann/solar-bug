@@ -17,7 +17,6 @@ LOG_MODULE_REGISTER(main, LOG_LEVEL_DBG);
 int main(void) {
   RET_IF_ERR(prst_adc_init());
   RET_IF_ERR(prst_led_init());
-  RET_IF_ERR(prst_button_init());
   RET_IF_ERR(prst_ble_init());
 
   RET_IF_ERR(prst_led_flash(2));
