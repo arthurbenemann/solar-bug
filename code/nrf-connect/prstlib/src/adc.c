@@ -108,6 +108,7 @@ static int read_adc_spec(const struct adc_dt_spec* spec, prst_adc_read_t* out) {
 }
 
 int prst_adc_init() {
+  RET_IF_ERR(adc_channel_setup_dt(&adc_soil_spec));
   RET_IF_ERR(adc_channel_setup_dt(&adc_batt_spec));
 
 #if DT_NODE_EXISTS(DT_NODELABEL(photo_transistor))
@@ -140,17 +141,16 @@ int prst_temp_read(prst_temp_t* out) {
 
 int prst_adc_soil_read(float battery_voltage, prst_adc_soil_moisture_t* out) {
   // Enable fast discharge circuit.
-  RET_IF_ERR(gpio_pin_set_dt(&fast_disch_dt, 1));
+  //RET_IF_ERR(gpio_pin_set_dt(&fast_disch_dt, 1));
   // Start PWM.
-  RET_IF_ERR(pwm_set_dt(&soil_pwm_dt, soil_pwm_dt.period, pulse));
+  //RET_IF_ERR(pwm_set_dt(&soil_pwm_dt, soil_pwm_dt.period, pulse));
   k_msleep(30);
   RET_IF_ERR(read_adc_spec(&adc_soil_spec, &out->adc_read));
   // Stop PWM.
-  RET_IF_ERR(pwm_set_dt(&soil_pwm_dt, 0, 0));
+  //RET_IF_ERR(pwm_set_dt(&soil_pwm_dt, 0, 0));
   // Turn off fast discharge circuit.
-  RET_IF_ERR(gpio_pin_set_dt(&fast_disch_dt, 0));
-  out->percentage =
-      MAX(0.0f, MIN(1.0f, get_soil_moisture_percent(battery_voltage, buf)));
+  //RET_IF_ERR(gpio_pin_set_dt(&fast_disch_dt, 0));
+  //out->percentage =      MAX(0.0f, MIN(1.0f, get_soil_moisture_percent(battery_voltage, buf)));
   return 0;
 }
 
