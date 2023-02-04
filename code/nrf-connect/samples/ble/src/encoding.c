@@ -111,7 +111,7 @@ int prst_ble_encode_service_data(const prst_sensors_t* sensors,
   // Soil moisture top.
   out[9] = 0x14;
   // Factor of 0.01, so we need to multiply our the value in 100% by 1/0.01 = 100.
-  uint16_t soil_val = sensors->soil1.adc_read.raw;
+  int16_t soil_val = sensors->soil1.adc_read.raw;
   out[10] = soil_val & 0xff;
   out[11] = soil_val >> 8;
 

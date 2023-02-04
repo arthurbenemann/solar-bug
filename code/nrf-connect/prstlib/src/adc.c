@@ -19,8 +19,17 @@ static const struct pwm_dt_spec soil_pwm_dt =
     PWM_DT_SPEC_GET(DT_NODELABEL(soil_pwm));
 static const uint32_t pulse = DT_PROP(DT_NODELABEL(soil_pwm), pulse);
 
-struct gpio_dt_spec fast_disch_dt =
-    GPIO_DT_SPEC_GET(DT_NODELABEL(fast_disch), gpios);
+struct gpio_dt_spec soil_c_dt =
+    GPIO_DT_SPEC_GET(DT_NODELABEL(soil_c), gpios);
+
+struct gpio_dt_spec soil_top_dt =
+    GPIO_DT_SPEC_GET(DT_NODELABEL(soil_top), gpios);
+
+struct gpio_dt_spec soil_mid_dt =
+    GPIO_DT_SPEC_GET(DT_NODELABEL(soil_mid), gpios);
+
+struct gpio_dt_spec soil_bot_dt =
+    GPIO_DT_SPEC_GET(DT_NODELABEL(soil_bot), gpios);
 
 // Shared buffer and adc_sequennce.
 static int16_t buf;
@@ -34,6 +43,9 @@ static const struct adc_dt_spec adc_soil_spec =
 
 static const struct adc_dt_spec adc_batt_spec =
     ADC_DT_SPEC_GET_BY_IDX(DT_PATH(zephyr_user), 1);
+
+
+
 
 #if DT_NODE_EXISTS(DT_NODELABEL(photo_transistor))
 
@@ -144,8 +156,19 @@ int prst_adc_soil_read(float battery_voltage, prst_adc_soil_moisture_t* out) {
   //RET_IF_ERR(gpio_pin_set_dt(&fast_disch_dt, 1));
   // Start PWM.
   //RET_IF_ERR(pwm_set_dt(&soil_pwm_dt, soil_pwm_dt.period, pulse));
-  k_msleep(30);
+
+
+  gpio_pin_configure_dt(&soil_c_dt, GPIO_OUTPUT);
+  gpio_pin_set_dt(&soil_c_dt,1);
+  k_usleep(5);
+  gpio_pin_configure_dt(&soil_c_dt, GPIO_INPUT);
+
   RET_IF_ERR(read_adc_spec(&adc_soil_spec, &out->adc_read));
+
+  gpio_pin_set_dt(&soil_c_dt,0);
+  gpio_pin_configure_dt(&soil_c_dt, GPIO_OUTPUT);
+  
+
   // Stop PWM.
   //RET_IF_ERR(pwm_set_dt(&soil_pwm_dt, 0, 0));
   // Turn off fast discharge circuit.

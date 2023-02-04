@@ -41,10 +41,18 @@
 
 	ctrl {
 		compatible = "gpio-keys";
-		fast_disch: fast_disch {
-			// P1.10.
-			gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+		soil_c: soil_c {
+			gpios = <&gpio0 28 GPIO_ACTIVE_HIGH>;
 			label = "Fast discharge circuitry";
+		};
+		soil_mid: soil_mid{
+			gpios = <&gpio0 29 GPIO_ACTIVE_HIGH>;
+		};
+		soil_bot: soil_bot{
+			gpios = <&gpio0 30 GPIO_ACTIVE_HIGH>;
+		};
+		soil_top: soil_top{
+			gpios = <&gpio0 31 GPIO_ACTIVE_HIGH>;
 		};
 	};
 };
@@ -99,12 +107,11 @@
 	// Soil.
 	channel@0 {
 		reg = <0>;
-		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,gain = "ADC_GAIN_1_4";
 		zephyr,reference = "ADC_REF_VDD_1_4";
-		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-		// P0.031.
-		zephyr,input-positive = <NRF_SAADC_AIN7>;
-		zephyr,resolution = <10>;
+		zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
+		zephyr,input-positive = <NRF_SAADC_AIN6>;
+		zephyr,resolution = <14>;
 
 	};
 
@@ -115,7 +122,7 @@
 		zephyr,reference = "ADC_REF_INTERNAL";
 		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
 		zephyr,input-positive = <NRF_SAADC_VDD>;
-		zephyr,resolution = <10>;
+		zephyr,resolution = <14>;
 	};
 };
 

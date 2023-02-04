@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../ble"
+		},
+		{
+			"path": "../../../../../ESP_SPS30_CASE"
 		}
 	],
 	"settings": {
